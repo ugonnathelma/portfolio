@@ -41,12 +41,12 @@ class App extends Component {
               </PageSlider>
             </Route>
             <Route exact path="/work" >
-              <PageSlider key={1}>
+              <PageSlider key={3}>
                 <Home />
               </PageSlider>
             </Route>
             <Route exact path="/contact" >
-              <PageSlider key={1}>
+              <PageSlider key={3}>
                 <Home />
               </PageSlider>
             </Route>
