@@ -40,6 +40,16 @@ class App extends Component {
                 <Blog />
               </PageSlider>
             </Route>
+            <Route exact path="/work" >
+              <PageSlider key={1}>
+                <Home />
+              </PageSlider>
+            </Route>
+            <Route exact path="/contact" >
+              <PageSlider key={1}>
+                <Home />
+              </PageSlider>
+            </Route>
           </Switch>
         </Main>
       </BrowserRouter>
