@@ -15,7 +15,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      background: "https://cdn.stocksnap.io/img-thumbs/960w/OHKILTFW97.jpg"
+      background: "./images/backgroundImage.jpg"
     };
   }
 
