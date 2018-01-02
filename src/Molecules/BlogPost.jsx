@@ -110,7 +110,7 @@ const PostContent = styled.div`
   flex: 7;
   display: flex;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 750px) {
     flex-direction: column; 
   }
 `;
