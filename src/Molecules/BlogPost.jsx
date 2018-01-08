@@ -50,10 +50,7 @@ const Container = styled.div`
   margin: 0 auto;
   display: flex;
   height: 30vh;
-
-  @media screen and (max-width: 500px) {
-    
-  }
+  margin-bottom: 2rem;
 `;
 
 const PostTitle = styled.h3`
