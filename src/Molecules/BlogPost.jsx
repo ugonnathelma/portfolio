@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 // third-party libraries
 import styled from 'styled-components';
@@ -22,16 +23,18 @@ class BlogPost extends Component {
   render() {
     return (
       <Container>
-        <PostDate><Day>14</Day>
+        <PostDate><Day>{this.props.day}</Day>
           <Month>
-            {this.state.isMobile ? "January".substring(0, 3) : "January"}
+            {this.state.isMobile ? this.props.month.substring(0, 3) : this.props.month}
           </Month>
-          <Year>2017</Year></PostDate>
+          <Year>{this.props.year}</Year></PostDate>
         <PostContent>
-          <FeaturedImage src="./images/man-beach.jpg" >
+          <FeaturedImage src={this.props.featuredImage} >
           </FeaturedImage>
           <Summary>
-            <PostTitle>This is a blog title</PostTitle>
+            <PostTitle>{this.props.title}</PostTitle>
+            <PostBrief><textarea rows={this.state.isMobile ? "2" : "3"} readOnly value={this.props.summary} />...</PostBrief>
+            <ReadMore to={this.props.link}><i className="fa fa-eye"></i></ReadMore>
           </Summary>
         </PostContent>
       </Container>
@@ -43,14 +46,60 @@ export default BlogPost;
 
 const Container = styled.div`
   background: #ffffff;
-  height: 50vh;
   width: 80%;
   margin: 0 auto;
   display: flex;
+  height: 30vh;
+  margin-bottom: 2rem;
 `;
 
 const PostTitle = styled.h3`
   width: 100%;
+  flex: 1;
+  margin-top: 0px;
+  font-size: 1.1rem;
+  text-align: justify;
+
+  @media screen and (max-width: 500px) {
+    font-size: 90%;
+  }
+`;
+
+const ReadMore = styled(Link)`
+  text-decoration: none;
+  color: #909090;
+
+  &:hover {
+    color: #000000;
+  }
+
+  i {
+    flex: 1;
+  width: 10%;
+  float: right;
+  }
+`;
+
+const PostBrief = styled.div`
+  flex: 8;
+
+  textarea {
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    overflow: hidden;
+    resize: none;
+    background: transparent;
+    border none;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const PostContent = styled.div`
@@ -58,7 +107,7 @@ const PostContent = styled.div`
   flex: 7;
   display: flex;
 
-  @media screen and (max-width: 750px) {
+  @media screen and (max-width: 500px) {
     flex-direction: column; 
   }
 `;
@@ -100,17 +149,18 @@ const FeaturedImage = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
 
-  @media screen and (max-width: 750px) {
-
-  }
 `;
 
 const Summary = styled.div`
   flex: 1;
   background: #f5f5f5;
-  padding: 0.5rem;
-
-  @media screen and (max-width: 750px) {
-    font-size: 70%;
-  }
+  padding: 1.5rem;
+  text-overflow: ellipsis;
+  display: flex;
+  flex-direction: column;
 `;
+
+BlogPost.defaultProps = {
+  link: '/',
+  month: 'January'
+}
